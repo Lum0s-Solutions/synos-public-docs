@@ -198,3 +198,4 @@ Syn_OS is designed for **authorized security testing and education only**. Users
 Made with ❤️ by the Syn_OS Team
 
 </div>
+
