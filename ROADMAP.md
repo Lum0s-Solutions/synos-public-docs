@@ -1,91 +1,42 @@
-# Roadmap
+# Direction
 
-### *what's shipped, what's imminent, what's the long game.*
-
----
-
-## v60.0.0 "Sun & Salt" — current
-
-The first ISO carrying the full v44 → v60 codesprint. Sixteen versions of compounding work fused into one signed release.
-
-**What v60 brings:**
-- SBOM (CycloneDX) drift detector across builds
-- IPO readiness self-test — institutional-grade audit pass
-- External blocker playbook for cosign + cross-oracle ceremonies
-- All v44–v59 features merged into a single coherent release surface
+### *what's shipped, where we're heading.*
 
 ---
 
-## the v44 → v60 codesprint, shipped
+## what's already in the platform
 
-| Codename | What landed |
-|---|---|
-| **v44 Crucible** | Fuzz harness, attest LSM, observability kernel, rebuild-verify CI |
-| **v45 Glasswalker** | Kernel observability syscalls 480–485 (now 17 total) |
-| **v46 Beachhead** | Process attestation HMAC ledger + LSM hooks |
-| **v47** | License gate, audit HMAC chain, CSV/EVTX/syslog exports |
-| **v48 Forge** | Sigstore Rekor + SLSA-3 reproducible builds |
-| **v49 Crystal Net** | Federation server (mTLS + per-tenant HMAC) |
-| **v50 Tenfold** | RaaS engine, billing integration, LLM red-team harness |
-| **v51 Storm Glass** | TwinPlugin (8th synos-bevy plugin) + kernel-snapshot |
-| **v52 Riftrunner** | In-kernel safe-bytecode VM |
-| **v53 Quantumweave** | synos-cortex-q tensor-network ML |
-| **v54** | Capability tokens (synos-curtain-tokens) |
-| **v55 Stoneglass** | Hive Ansible deploy (8-node GA playbook) |
-| **v56** | Rust ratchet — kernel hot-path Rust at 83.54% |
-| **v57 Phoenix Eye** | LLM red-team |
-| **v58 Stagehand** | Classroom + cohort + instructor mode |
-| **v59 Doublecross** | FedRAMP Moderate control map + daily ConMon |
-| **v60 Sun & Salt** | SBOM drift detector + IPO readiness self-test + external blocker playbook |
+The current generation of Syn_OS — **v60 "Sun & Salt"** — is the product of a sustained, multi-year build. The system that exists today carries:
 
-Some of these features are master-internal — the codesprint shipped capability across all three images, but the surface visible in each varies by license tier. The public ISOs (GRIMOIRE Public + Goodlife) carry their full intended share of the work.
+- A custom Linux kernel with deep Rust integration and a deliberate system-call surface for AI/observability.
+- A local AI daemon — codename **ALFRED** — modeled after the structure of a biological brain.
+- The **GRIMOIRE** gamified training platform with a hand-authored lab corpus, faction system, narrative quests, and a long arc from novice to sovereign operator.
+- An integrated game engine surface for the parts of the user experience that benefit from one.
+- A distributed mesh capability for those ready to extend the system across multiple machines.
+- Post-quantum cryptography woven through the trust toolkit.
+- A self-healing build pipeline producing signed releases with verifiable supply-chain provenance.
+
+The work to get here was coordinated across many named campaigns, each adding a load-bearing piece to the platform. The compounding effect is what v60 represents.
 
 ---
 
-## imminent — public ISO releases
+## what's coming
 
-The work toward public distribution is in flight.
+Syn_OS is heading into a phase of **public release**. The platform has been validated internally for long enough; the next chapter is opening it to the practitioners we've been building it for.
 
-- **GRIMOIRE Public ISO** — the gamified training platform, signed with cosign, anchored in Rekor, distributed publicly. First-boot wizard, faction selection, 100-lab corpus, full game engine, integrity-manifest enforcement.
-- **Goodlife ISO** — the AI research variant. Jupyter, ALFRED `research-mode`, post-quantum experimentation toolkit, LUKS-encrypted research data.
-- **Cohort program v1** — multi-tenant GRIMOIRE deployments for classes, clubs, and security teams.
-- **Public Sigstore + Rekor** — verifiable supply chain from build oracle to USB stick.
-- **Hive expansion playbook** (Stoneglass GA) — public Ansible recipe for self-hosting the 8-node Arcanum Hive.
+Broad themes, in rough order of when they mature:
 
-These are not "someday" items. They're what the team is heading into next.
+- **Public-facing ISO releases** — the GRIMOIRE training image and the AI-research variant, signed and verifiable, distributed through channels suited to a serious cybersecurity audience.
+- **Cohort programs** — multi-tenant deployments for classes, clubs, security teams, and training programs that want a real platform under their curriculum.
+- **Deeper AI augmentation** — the companion daemon does its job today; we have a long list of ways it could do more.
+- **Continual GRIMOIRE content waves** — new labs, new boss contracts, new narrative arcs, new factions over time. The world deepens.
+- **Easier mesh adoption** — the distributed parts of the platform have power; we're working on the parts that make them feel inevitable rather than effortful.
 
----
-
-## near-term themes
-
-**Tightening what exists.** The platform has been evolving fast. The next chapter sands every rough edge — onboarding, documentation, error messaging, first-boot polish, the unglamorous work that makes the user-visible improvement.
-
-**Deeper AI augmentation.** ALFRED does its job today. There's a long list of ways it could do more — context, anticipation, usefulness in the operator's actual loop. v61–v65 carries that work forward.
-
-**Continual GRIMOIRE content waves.** New labs. New boss contracts. New narrative arcs. New factions, possibly. Cohort tooling, definitely. The world deepens with every release.
-
-**Mesh, made easier.** Distributed-by-default sounds simple in a sentence and is harder in practice. We're working on the parts that make a mesh feel inevitable rather than effortful.
+We don't ship a public roadmap with dates. Calendars lie, and we'd rather be honest. The directions above are real. The cadence at which they arrive is whatever the work requires.
 
 ---
 
-## medium-term — the v61–v70 horizon
-
-Themes we're paying attention to, in rough priority order:
-
-- **Public release cadence** — predictable, signed, transparent. ISOs every cycle.
-- **Cohort programs at scale** — clubs, classes, training programs running on shared GRIMOIRE infrastructure.
-- **AI capability ladder** — bigger models, smarter routing, deeper integration with the kernel observability surface.
-- **Reproducible builds in production** — every public ISO byte-for-byte reproducible by an independent verifier.
-- **Federation between independent operators** — Hive-to-Hive, with cryptographic identity and permissioned visibility.
-- **Curriculum partnerships** — formal mappings between GRIMOIRE progression and academic / industry training.
-- **Hardware diversity** — supported architectures beyond x86_64.
-- **Mobile companion** — read-only operator dashboard for on-the-go awareness.
-
-Specific version numbers attach to specific deliverables as we get closer. Today's roadmap is themes; tomorrow's commit log is the truth.
-
----
-
-## long-term — the north star
+## the long arc
 
 The end-state we're moving toward is a platform where the operator owns their infrastructure, their intelligence, and their future — not in a slogan, but **mechanically, cryptographically, architecturally**. The pieces are there. The work is in fitting them together with the polish, the trust, and the longevity that an operating system deserves.
 
@@ -97,12 +48,12 @@ The roadmap reflects that.
 
 ## what isn't on this roadmap
 
-The Operator (Master) image's internal feature trajectory. It exists. It evolves alongside the public roadmap. It is not for public distribution and is not part of this document by design.
+The internal Operator image's feature trajectory. It exists. It evolves alongside the public roadmap. It is not for public distribution and is not part of this document by design.
 
-If a master-internal capability ever crosses the boundary into a public image, it shows up here.
+Specific dates. Specific version numbers for things that haven't shipped yet. Promises that read better in marketing than they do six months later. The work happens at the pace it happens.
 
 ---
 
 ## how to follow
 
-The work happens in public, in this repository's metadata and in the cadence of releases. Watch this repo. When the chapters change, the documents change with them.
+Watch this repository. When the chapters change, the documents change with them. The work is the work. The story will keep updating as it unfolds.

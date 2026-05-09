@@ -1,6 +1,6 @@
 # Architecture
 
-### *biological in inspiration. rigorous in implementation. v60.0.0 "Sun & Salt".*
+### *biological in inspiration. rigorous in implementation.*
 
 ---
 
@@ -11,94 +11,75 @@ The design philosophy starts with a metaphor and refuses to let it become decora
 Syn_OS treats the operating system itself as the synaptic cleft.
 
 ```
-Pre-synaptic neuron    = Hardware
-Synaptic cleft         = Syn_OS (kernel + userspace + ALFRED)
-Post-synaptic neuron   = Application consciousness (ALFRED decisions, user processes)
-Neurotransmitters      = System calls (469–485)
-Receptors              = Syscall handlers
-Synaptic plasticity    = Adaptive kernel module behavior + ALFRED's learning loops
+Hardware                    →  pre-synaptic firing
+Syn_OS (the OS itself)      →  the synapse
+Application + intent        →  post-synaptic decision
 ```
 
-This is not branding. It's the framing every architectural decision is checked against.
+This is not branding. It's the framing every architectural decision is checked against. *Where in the gap does this live? What does it translate from, and what does it translate into?*
 
 ---
 
 ## the four pillars
 
+The system rests on four load-bearing components, each genuinely irreplaceable in the design.
+
 ### the kernel
 
-A custom Linux 6.19 build with `CONFIG_RUST=y` and **17 custom system calls** (469–485). The syscalls expose:
-
-| Range | Purpose |
-|---|---|
-| **469–479** | Consciousness state, quantum memory entanglement, AI metrics, eBPF monitor control |
-| **480–485** | Kernel observability, perf instrumentation, process attestation, snapshot, twin |
-
-The kernel ships **11 loadable Rust kernel modules** covering memory, networking, hardening, interrupts, modloader, procfs, power, consciousness, and module verification. After the v56 Rust Ratchet, the kernel hot path is **83.54% Rust** by line count. KSPP hardening fragment merged. Module signing wired through MOK keys generated at build time.
+A custom Linux build with significant Rust integration — not Linux-with-Rust-bolted-on, but Linux taking the rust-in-kernel work seriously. Memory-safe modules where memory safety matters most. A deliberate library of system calls that lets userspace ask the system about itself in ways a vanilla kernel cannot. The kernel is not a black box — it's an active participant in the system's awareness of itself.
 
 ### ALFRED
 
-The Adaptive Learning Framework for Responsive Evolution and Defense. ALFRED is the AI daemon — not a chatbot, but the operator's companion at the system level.
-
-- **11-region neuroanatomical brain.** Modeled loosely after biological structure: thalamus (gating), amygdala (threat detection), hippocampus (memory), insula (interoception), cerebellum (coordination), corpus callosum (interhemispheric routing), default mode network (idle synthesis), glial (support), brainstem (orchestration), nucleus, plus the consciousness-types crate that ties them.
-- **Cortex stage** fuses traditional AI, neuromorphic spike networks, quantum coherence collapse, and Edelman's Theory of Neuronal Group Selection (TNGS) into a single decision pipeline.
-- **Local inference** via Ollama and ONNX. No cloud in the critical path.
-- **BrainBridge** consumes `AlfredSignal` events from kernel telemetry into the cortex. The kernel and the daemon talk through the syscall surface.
+The operator's companion. A local AI daemon that runs on the box, not in the cloud. Modeled loosely after the structure of a biological brain: many small specialized regions, each with a job, coordinating through a central conductor. ALFRED watches the system, anticipates the operator's loop, surfaces context when context is what's missing. It does not phone home.
 
 ### GRIMOIRE
 
-The gamified cybersecurity training platform — 100 labs, 13 categories, faction system, XP economy, boss contracts, branching narrative, cohort competition. Covered in detail in [GRIMOIRE.md](./GRIMOIRE.md).
+The gamified cybersecurity training surface — the public face of the platform, covered in detail in [its own document](./GRIMOIRE.md). GRIMOIRE turns cybersecurity practice into a world worth living inside. Factions, labs, boss contracts, economy, narrative. The training arc that takes a novice to an operator and means it.
 
-GRIMOIRE is the public face. It's what the GRIMOIRE Public ISO ships. It's the apprenticeship surface for the entire community we're building.
+### the mesh
 
-### the mesh — Arcanum Hive
-
-When the system extends across hardware, it does so as the Arcanum Hive: an 8-node Tailscale mesh coordinated by a Kubernetes operator. Per-tenant HMAC. mTLS by default. Sovereignty as a design property, not a marketing claim.
-
-The Hive Stoneglass GA playbook (v55) is the public-facing self-hosting recipe. The hive is yours to extend.
+When the system is ready to extend, it does so as a mesh — encrypted, peer-to-peer, sovereign. Multiple machines, owned by you, talking to each other on terms you set. The mesh is where the platform stops being a single laptop and becomes infrastructure.
 
 ---
 
 ## the three-image strategy
 
-Syn_OS is built once and ships in three signed ISOs from a single source tree.
+Syn_OS is built once and ships in tiers. The split exists because the audiences are genuinely different.
 
-| Image | Audience | License |
+| Image | Audience | Posture |
 |---|---|---|
-| **Operator (Master)** | The team. Internal. | Proprietary, not distributed publicly |
-| **GRIMOIRE Public** | Students, cohorts, practitioners | Apache 2.0 + LicenseRef-GRIMOIRE-Public |
-| **Goodlife** | AI researchers, post-quantum, civilian work | Apache 2.0 |
+| **Operator** | The team that builds Syn_OS. Internal. | The full surface. Not distributed publicly. |
+| **GRIMOIRE Public** | Students, cohorts, self-taught practitioners. | The training platform — same world, gated tooling. |
+| **Goodlife** | AI researchers, post-quantum experimenters, civilian work. | Research-oriented defaults. AI tooling. Civilian-safe. |
 
-Capability boundaries between images are **mechanically enforced** — by binary symbol scanning, feature flag audits, lab integrity manifests, and supply-chain provenance checks. The mechanism is part of the architecture, not bolted on.
+The boundaries are enforced. What ships in each image is what was meant to ship. The mechanism is mechanical, not honor-system.
 
 ---
 
 ## the substrate
 
-Below the four pillars sits the engineering work that makes the higher-level vision viable:
+Below the four pillars, there's a substrate of practical engineering work that makes the higher-level vision viable. None of this is glamorous. All of it is required:
 
-- **160-crate Rust workspace** with zero compile errors. `cargo check --workspace` passes; `cargo deny` clean.
-- **Toolchain pinned** at `nightly-2026-02-12` (rustc 1.95.0-nightly).
-- **41-stage self-healing build pipeline.** Producing the three images is a multi-hour process that recovers from individual stage failures without losing the whole run. SLSA-3 reproducible build target. Dual-witness signature support across mesh nodes.
-- **Test infrastructure.** 1,600+ tests. 100% pass rate. 35% tarpaulin coverage floor. Continuous integration across 17 workflows (5 ubuntu-latest, 12 self-hosted).
-- **Post-quantum cryptography.** ML-KEM (key encapsulation), ML-DSA (signatures), SLH-DSA (hash-based signatures) integrated into the trust toolkit.
-- **Cosign + Rekor** signing path for ISO releases. Sigstore transparency log entries. Verifiable provenance from build oracle to USB stick.
-- **MkDocs Material documentation** site, version-aware, fact-checked against the source tree.
+- **Rust everywhere it makes sense.** The bulk of the system is memory-safe code.
+- **A self-healing build pipeline.** Producing the images is a multi-stage process that recovers from individual failures without losing the whole run.
+- **Post-quantum cryptography in the toolkit.** Built for the cryptographic transition that's already underway.
+- **Reproducible builds and signed releases.** Verifiable provenance from build to delivery.
+- **Documentation that takes itself seriously.** Living documents, version-aware, checked against the codebase.
 
 ---
 
 ## design axioms
 
-Three axioms applied recursively:
+Three axioms, applied recursively:
 
 1. **The synaptic gap is real.** Hardware is not the OS. The OS is not the application. The OS is the gap, and the quality of the system is the quality of that translation.
-2. **Memory safety where it matters.** The Rust ratchet is a one-way commitment. Kernel hot paths and userspace foundations move toward Rust, never away.
-3. **Tiers are mechanical.** Capability boundaries between Operator, GRIMOIRE Public, and Goodlife images are enforced by the build, not by goodwill.
+2. **Memory safety where it matters.** Where Rust earns its keep, Rust earns its keep.
+3. **Tiers are mechanical.** Capability boundaries between images are enforced by the build, not by goodwill.
 
 ---
 
 ## further reading
 
-The deeper architectural surface — full kernel internals, ALFRED's brain crate topology, mesh authentication and rotation mechanics, the master-only capability set — lives with the source. The public-facing pillars described here are the shape of the system.
+The deeper architectural surface — kernel internals, AI daemon mechanics, mesh authentication, build pipeline — lives with the source. The shape described here is the public-facing pillars.
 
 The shape is enough to know whether the rest will interest you.
