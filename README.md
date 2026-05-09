@@ -1,10 +1,17 @@
 <div align="center">
 
+<img src="./assets/phoenix.png" alt="Syn_OS — the synaptic operating system" width="280" />
+
 # Syn_OS
 
 ### v60.0.0 — "Sun & Salt"
 
 *An AI-native cybersecurity operating system, built almost entirely in Rust, designed for those who treat security as craft.*
+
+[![Status](https://img.shields.io/badge/status-pre--release-ff6b35)]()
+[![Codename](https://img.shields.io/badge/codename-Sun_&_Salt-c9302c)]()
+[![Built with](https://img.shields.io/badge/built_with-Rust-000000?logo=rust)]()
+[![License (this repo)](https://img.shields.io/badge/docs-CC--BY--SA_4.0-blue)](LICENSE)
 
 </div>
 
@@ -126,6 +133,10 @@ The doors open as the work matures.
 
 <div align="center">
 
-*the gap is where the meaning lives.*
+<img src="./assets/phoenix-white.png" alt="" width="120" />
+
+### *the gap is where the meaning lives.*
+
+— LumOs Solutions —
 
 </div>
