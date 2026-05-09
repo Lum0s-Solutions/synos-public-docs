@@ -1,25 +1,91 @@
 # Professional Showcase
 
-## Cybersecurity Skills
-As a cybersecurity expert, I have honed my skills through rigorous training and practical experience. My commitment to maintaining the highest security standards in software development ensures that vulnerabilities are identified and mitigated early in the development lifecycle.
-
-## Technical Achievements in Syn_OS
-- **A+ Grade:** My work on Syn_OS has been recognized with an A+ grade, reflecting my dedication to quality and performance.
-- **Performance Metrics:** Achieved a staggering **9,798 operations per second** without compromising security or stability.
-- **Technical Debt:** Maintained **0 technical debt**, ensuring that the codebase remains clean, efficient, and maintainable.
-
-## Specialized Expertise
-I possess specialized knowledge in several advanced areas, including:
-- **Artificial Intelligence (AI):** Developing robust AI systems that can learn and adapt in real-time.
-- **Post-Quantum Cryptography (PQC):** Implementing cutting-edge cryptographic methods to secure data against evolving threats.
-- **Kernel Development:** Contributing to kernel enhancements that improve system performance and security.
-
-## Quality Assurance
-My approach to quality assurance is reflected in a **14:1 test-to-code ratio**, ensuring comprehensive testing of all features before deployment. This practice minimizes bugs and enhances system reliability.
-
-## Complex System Call Implementation
-I have also executed complex system call implementations that push the boundaries of conventional architecture, driving innovation while adhering to best practices.
+### *Ty Limoges, lead of Syn_OS — a snapshot of the work that produced v60.0.0 "Sun & Salt".*
 
 ---
 
-**Date:** 2026-01-24
+## the project
+
+**Syn_OS** is a multi-year, full-stack cybersecurity operating system project conceived, architected, and led by Ty Limoges out of LumOs Solutions. It is not a fork. It is not a theme on top of an existing distribution. It is a from-scratch operating system platform that takes itself seriously across:
+
+- Custom Linux kernel engineering
+- A 160-crate Rust workspace
+- Local AI daemon design and integration
+- A gamified training environment with 100 hand-authored labs
+- A distributed, encrypted-by-default mesh
+- A 41-stage self-healing build pipeline
+- Post-quantum cryptography integration
+- Game engine integration via Bevy 0.14
+- Documentation craft at production quality
+
+It is the kind of project that exercises the full stack and refuses to ship at a quality bar lower than the one its own gates enforce.
+
+---
+
+## the v60 numbers
+
+| Metric | Value |
+|---|---|
+| Version | **v60.0.0** "Sun & Salt" |
+| Cargo workspace | **160 active crates**, 0 compile errors |
+| Custom kernel system calls | **17** (numbered 469–485) |
+| Loadable Rust kernel modules | **11** |
+| Kernel hot-path Rust ratio | **83.54%** (post-Rust ratchet) |
+| GRIMOIRE labs | **100** hand-authored, manifest-enforced |
+| Lab categories | **13** |
+| Bevy game engine plugins | **8** |
+| ISO profiles | **3** (Operator / GRIMOIRE Public / Goodlife) |
+| Build pipeline stages | **41**, self-healing |
+| Test count | **1,600+** |
+| Test pass rate | **100%** |
+| Coverage floor | **35%** tarpaulin, ratcheted |
+| CI workflows | **17** (5 ubuntu-latest, 12 self-hosted) |
+| Toolchain | `nightly-2026-02-12` (rustc 1.95.0-nightly) |
+| Documentation | MkDocs Material, version-aware, fact-checked |
+
+---
+
+## the disciplines exercised
+
+- **Kernel-level systems engineering.** Custom Linux 6.19 build with `CONFIG_RUST=y`. 17 custom system calls. 11 loadable Rust kernel modules. KSPP hardening. MOK module signing. Kernel observability instrumentation (eBPF, perf, attestation hooks).
+- **Rust at scale.** 160-crate workspace with deliberate architectural separation. `cargo deny` clean (OpenSSL/native-tls banned). Sustained discipline around dependency hygiene and supply-chain posture.
+- **AI/ML integration.** Local-first inference via Ollama and ONNX. An 11-region neuroanatomically-modeled brain daemon (ALFRED). Cortex stage fusing traditional AI, neuromorphic spike networks, quantum coherence, and TNGS into a unified decision pipeline. No cloud in the critical path.
+- **Game design and engine integration.** Bevy 0.14 integration across 8 plugins (~7,000+ lines). Cutscenes, mindmaps, retro filters, cyberspace exploration, skill trees, faction HQs, system monitors, kernel-state visualization.
+- **Distributed systems.** 8-node Tailscale mesh (WireGuard fallback) coordinated through a Kubernetes operator. mTLS + per-tenant HMAC. Cross-oracle build verification for SLSA-3 dual-witness signatures.
+- **Post-quantum cryptography.** ML-KEM, ML-DSA, SLH-DSA integrated into the trust toolkit through the project's `Icarus` crate.
+- **Build engineering.** 41-stage, self-healing, multi-hour pipeline producing three signed ISOs from a single source tree, with mechanical enforcement of capability boundaries between images.
+- **Compliance and supply chain.** SBOM (CycloneDX) per ISO. Cosign + Rekor signing. SLSA-3 reproducible build target. FedRAMP Moderate control map (v59 Doublecross). Daily continuous monitoring.
+- **Documentation craft.** MkDocs Material site, version-aware, checked against the source tree. Operator runbooks. Stage-by-stage build-wizard pedagogy.
+
+---
+
+## the way of working
+
+- **Quality bar held high.** Test coverage taken seriously. Continuous integration treated as load-bearing rather than ceremonial. Reproducibility, supply-chain provenance, and binary boundary enforcement engineered in rather than hoped for.
+- **Long-arc discipline.** Multi-year sustained execution. Sixty-plus version releases. The v44 → v60 codesprint coordinated sixteen named campaigns into a single coherent release surface.
+- **Solo-led, multi-perspective.** Architectural through-line carried by the lead, with disciplined coordination across the disciplines listed above.
+- **Documentation as code.** Living documents. Version-aware. The kind of documentation that holds up under actual use because it's checked against the source.
+
+---
+
+## what this evidences
+
+For anyone evaluating cybersecurity, AI, or systems engineering candidates: the body of work here demonstrates the ability to hold a complex, multi-disciplinary project across a long arc, to make architectural decisions that compound rather than collapse, and to sustain quality without the scaffolding of a large team.
+
+For anyone evaluating leadership: a project of this scope cannot be willed into existence. It requires opinionated technical taste, disciplined prioritization, mechanical enforcement of standards, and a sustained appetite for the unglamorous work — building, repairing, documenting, and refining the same systems over years until they hold up.
+
+---
+
+## further reading
+
+- [README.md](./README.md) — what Syn_OS is and what's in v60
+- [GRIMOIRE.md](./GRIMOIRE.md) — the gamified training platform
+- [ARCHITECTURE.md](./ARCHITECTURE.md) — the four pillars and the substrate
+- [FEATURES.md](./FEATURES.md) — capability inventory
+- [ROADMAP.md](./ROADMAP.md) — what's shipped and what's coming
+
+---
+
+If any of the above aligns with what you're looking for — in a hire, in a partner, in a research collaborator — we'd be glad to have the conversation.
+
+**Last updated:** 2026-05-09

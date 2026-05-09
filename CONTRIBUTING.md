@@ -1,371 +1,96 @@
-# Contributing to Syn_OS
+# Contributing
 
-Thank you for your interest in contributing to Syn_OS! This guide will help you get started.
-
-## 🤝 Ways to Contribute
-
-### 1. Report Bugs
-Found a bug? [Open an issue](https://github.com/TLimoges33/Syn_OS/issues/new?template=bug_report.md) with:
-- Description of the issue
-- Steps to reproduce
-- Expected vs actual behavior
-- System information (kernel version, RAM, etc.)
-- Logs if available
-
-### 2. Suggest Features
-Have an idea? [Start a discussion](https://github.com/TLimoges33/Syn_OS/discussions/new?category=ideas) or [open a feature request](https://github.com/TLimoges33/Syn_OS/issues/new?template=feature_request.md).
-
-### 3. Improve Documentation
-- Fix typos or unclear explanations
-- Add examples or tutorials
-- Translate documentation
-- Create video tutorials
-
-### 4. Contribute Code
-- Fix bugs
-- Implement new features
-- Optimize performance
-- Add tests
-
-### 5. Create GRIMOIRE Labs
-Share your expertise by creating training labs for the community!
+### *the long-arc community we're building, and how to join it.*
 
 ---
 
-## 🚀 Getting Started
+Syn_OS is built on the premise that **security is a craft**, and crafts are sustained by communities — not consumers. The community we want around this project is the kind that takes the craft seriously, that can hold a long arc, and that contributes from a place of mastery.
 
-### Prerequisites
-
-```bash
-# Required tools
-- Git
-- Rust (1.75+)
-- Python (3.11+)
-- Docker
-- Build essentials (gcc, make, cmake)
-
-# Install Rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-# Install Python dependencies
-sudo apt install python3-dev python3-pip python3-venv
-```
-
-### Fork and Clone
-
-```bash
-# Fork the repository on GitHub
-# Then clone your fork
-git clone git@github.com:YOUR_USERNAME/Syn_OS.git
-cd Syn_OS
-
-# Add upstream remote
-git remote add upstream git@github.com:TLimoges33/Syn_OS.git
-```
-
-### Set Up Development Environment
-
-```bash
-# Create Python virtual environment
-python3 -m venv venv
-source venv/bin/activate
-
-# Install development dependencies
-pip install -r development/requirements.txt
-
-# Build Rust components
-cargo build --workspace --exclude syn-kernel
-
-# Run tests
-cargo test --workspace --exclude syn-kernel
-python -m pytest tests/
-```
+This document describes how to participate today, and what we're building toward.
 
 ---
 
-## 📝 Development Workflow
+## current state of contribution
 
-### 1. Create a Branch
+The Syn_OS source tree is private. The boundaries between the three images (Operator, GRIMOIRE Public, Goodlife) are still being formalized in ways that affect how external contribution surfaces are exposed. We're being deliberate about opening doors.
 
-```bash
-# Update your fork
-git checkout main
-git pull upstream main
-
-# Create feature branch
-git checkout -b feature/your-feature-name
-# or
-git checkout -b fix/bug-description
-```
-
-### 2. Make Changes
-
-- Follow the [coding standards](#coding-standards)
-- Write tests for new features
-- Update documentation
-- Keep commits focused and atomic
-
-### 3. Test Your Changes
-
-```bash
-# Run all tests
-./scripts/03-test/dev/testing/verify-build.sh
-
-# Run specific tests
-cargo test -p synos-ai-daemon
-python -m pytest tests/test_consciousness.py
-
-# Check formatting
-cargo fmt --check
-black --check .
-```
-
-### 4. Commit Your Changes
-
-Follow [Conventional Commits](https://www.conventionalcommits.org/):
-
-```bash
-# Format: <type>(<scope>): <subject>
-
-git commit -m "feat(alfred): add voice command support"
-git commit -m "fix(kernel): resolve memory leak in syscall 480"
-git commit -m "docs(grimoire): add APT simulation lab guide"
-git commit -m "test(security): add eBPF monitor tests"
-```
-
-**Types:**
-- `feat`: New feature
-- `fix`: Bug fix
-- `docs`: Documentation only
-- `style`: Code style/formatting
-- `refactor`: Code refactoring
-- `test`: Adding tests
-- `chore`: Maintenance tasks
-- `security`: Security improvements
-
-### 5. Push and Create Pull Request
-
-```bash
-# Push to your fork
-git push origin feature/your-feature-name
-
-# Open a pull request on GitHub
-# Fill out the PR template with:
-# - Description of changes
-# - Related issues
-# - Testing performed
-# - Screenshots (if UI changes)
-```
+That said, **doors are not closed**. They are narrower than they will be.
 
 ---
 
-## 🎨 Coding Standards
+## what we welcome today
 
-### Rust
+### feedback on public-facing documentation
 
-```rust
-// Use idiomatic Rust
-// Follow clippy suggestions
-// Add documentation comments
+The repository you're reading right now is the project's first impression on the world. If something here is unclear, misleading, or wrong, we want to know. **Open an issue on this repository.** Documentation issues are the one category of community contribution that we have an immediate place for.
 
-/// Processes AI stimulus and returns decision
-///
-/// # Arguments
-/// * `stimulus` - The input stimulus data
-///
-/// # Returns
-/// * `Ok(Decision)` on success
-/// * `Err(Error)` on failure
-pub fn process_stimulus(stimulus: &Stimulus) -> Result<Decision> {
-    // Implementation
-}
+### conversations with practitioners
 
-// Run formatters
-cargo fmt
-cargo clippy -- -D warnings
-```
+If you're a cybersecurity practitioner, security researcher, kernel engineer, AI/ML systems engineer, or game/training designer — and Syn_OS resonates with the kind of work you'd want to do — we want to know who you are.
 
-### Python
+We are building a platform that lives or dies by the practitioners around it. The earliest conversations shape the work most.
 
-```python
-"""Follow PEP 8 and type hints."""
+### lab proposals for GRIMOIRE
 
-def process_threat_intel(indicator: str) -> ThreatScore:
-    """
-    Process a threat intelligence indicator.
+GRIMOIRE's 100-lab corpus is hand-authored. As the cohort programs scale, we'll be running curated lab-contribution programs. If you have a specific lab — a real-world scenario, a teaching arc, a vulnerability reproduction with educational depth — we'd be glad to evaluate it.
 
-    Args:
-        indicator: STIX 2.1 indicator object
+Open an issue with the title `Lab proposal:` and a one-paragraph description. We'll respond.
 
-    Returns:
-        ThreatScore with confidence and severity
+### cohort partnerships
 
-    Raises:
-        ValueError: If indicator format is invalid
-    """
-    pass
-
-# Run formatters
-black .
-isort .
-mypy src/
-```
-
-### Shell Scripts
-
-```bash
-#!/usr/bin/env bash
-# Use shellcheck for validation
-# Add error handling
-
-set -euo pipefail  # Exit on error, undefined vars, pipe failures
-
-# Function documentation
-# Description: Builds the ISO image
-# Arguments:
-#   $1 - Build profile (dev|production)
-build_iso() {
-    local profile="$1"
-    echo "Building ISO with profile: $profile"
-    # Implementation
-}
-```
+If you run a class, a security club, a CTF team, or a corporate training program, and you're interested in piloting GRIMOIRE in a cohort context — open an issue with the title `Cohort partnership:` or reach out through the channels that emerge as the program matures.
 
 ---
 
-## 🧪 Testing Guidelines
+## what's coming
 
-### Test Coverage
+### public source release for the GRIMOIRE Public image
 
-- Aim for 80%+ code coverage
-- Write unit tests for all new functions
-- Add integration tests for components
-- Create end-to-end tests for features
+When the GRIMOIRE Public ISO ships, the source tree carrying the **public profile** will be open. The license is mixed Apache 2.0 + LicenseRef-GRIMOIRE-Public. At that point, full PR-and-issues contribution will be possible against the public surface.
 
-### Test Structure
+### GRIMOIRE lab marketplace
 
-```rust
-#[cfg(test)]
-mod tests {
-    use super::*;
+We're building infrastructure for community-contributed labs to be reviewed, signed, and distributed. Authors get attribution. The integrity manifest enforces quality.
 
-    #[test]
-    fn test_consciousness_state_machine() {
-        // Arrange
-        let mut consciousness = Consciousness::new();
-        
-        // Act
-        let result = consciousness.process_stimulus(&stimulus);
-        
-        // Assert
-        assert!(result.is_ok());
-        assert_eq!(consciousness.state(), State::Awake);
-    }
-}
-```
+### public CVE / advisory channel
+
+When the GRIMOIRE Public + Goodlife ISOs are publicly distributed, we will operate a coordinated disclosure channel. Until then, security issues found in pre-release artifacts can be reported through the channels noted below.
+
+### community calls and roadmap input
+
+As the cadence of public releases stabilizes, we will run regular community calls — roadmap walk-throughs, design discussions, lab clinics. Watch this repository for announcements.
 
 ---
 
-## 📋 Pull Request Guidelines
+## what we're not yet ready for
 
-### Before Submitting
+- **Forks-and-PRs against the source tree at scale.** The repository carrying the source is private, and the boundaries between what's public and what's internal are still being formalized. External contribution to source becomes available with the public ISO releases.
+- **A general-purpose issue tracker for the source repo.** The private repo's issues are internal-only. Once the public ISOs ship, public issues attach to the public source.
 
-- [ ] Tests pass locally
-- [ ] Code follows style guidelines
-- [ ] Documentation updated
-- [ ] Commit messages follow convention
-- [ ] Branch is up-to-date with main
-
-### PR Description Template
-
-```markdown
-## Description
-Brief description of changes
-
-## Related Issues
-Fixes #123
-Related to #456
-
-## Type of Change
-- [ ] Bug fix
-- [ ] New feature
-- [ ] Breaking change
-- [ ] Documentation update
-
-## Testing
-- Tested on: Debian 13, 16GB RAM, 8 cores
-- Test commands run:
-  - `cargo test -p affected-crate`
-  - `pytest tests/test_feature.py`
-
-## Screenshots (if applicable)
-Attach before/after screenshots
-
-## Checklist
-- [ ] Code follows project style
-- [ ] Comments added for complex logic
-- [ ] Documentation updated
-- [ ] Tests added/updated
-- [ ] All tests pass
-```
+None of this is permanent. All of it is "not yet."
 
 ---
 
-## 🏆 Recognition
+## code of conduct
 
-Contributors will be:
-- Listed in [CONTRIBUTORS.md](CONTRIBUTORS.md)
-- Credited in release notes
-- Eligible for contributor badges
-- Invited to team discussions
+Crafts thrive in communities of mutual respect. Discussion in this project's spaces — issue trackers, future forums, future community calls — operates under a posture of: **assume good faith, push back hard on the work, never on the person.**
+
+A formal code of conduct document will be published alongside the public source release. The norms above are the ones we're building toward.
 
 ---
 
-## 💬 Communication
+## reporting security issues
 
-- **GitHub Issues**: Bug reports and features
-- **GitHub Discussions**: General questions and ideas
-- **Email**: synos@tlimoges.dev
-- **Discord**: Coming soon!
+If you've identified a security issue in any artifact released by this project, please **do not file a public issue**. Instead, open a coordinated disclosure: open a private security advisory through the GitHub interface (or through the channels published with each ISO release).
 
----
-
-## 📜 Code of Conduct
-
-We are committed to providing a welcoming and inclusive environment. Please read and follow our [Code of Conduct](CODE_OF_CONDUCT.md).
-
-### Our Standards
-
-**Positive behaviors:**
-- Being respectful of differing viewpoints
-- Gracefully accepting constructive criticism
-- Focusing on what is best for the community
-- Showing empathy towards other members
-
-**Unacceptable behaviors:**
-- Harassment or discriminatory language
-- Trolling or insulting comments
-- Publishing private information
-- Other conduct inappropriate in a professional setting
+We respond. We coordinate. We credit researchers in our advisory pages.
 
 ---
 
-## 📄 License
+## the long game
 
-By contributing, you agree that your contributions will be licensed under the MIT License.
-
----
-
-## 🙏 Thank You!
-
-Every contribution matters, whether it's:
-- A typo fix in documentation
-- A critical bug fix
-- A new feature
-- Helping other users
-
-Your time and effort help make Syn_OS better for everyone!
+This project is built on multi-year time horizons. The community we want around it is one that operates on the same horizon. If that resonates — **stay close to the work**. The doors will open in their own time. We hope you're there when they do.
 
 ---
 
-**Questions?** Don't hesitate to ask in [GitHub Discussions](https://github.com/TLimoges33/Syn_OS/discussions)!
+For the earliest possible signal as channels open: watch this repository. Star it if you're interested. The cadence of changes here tracks the cadence of the project.
