@@ -34,7 +34,7 @@ The platform that ships as Syn_OS today is the result of a sustained, multi-year
 - **ALFRED v5** — the AI daemon. 11-region neuroanatomically-modeled brain. Local inference via Ollama and ONNX. No cloud in the critical path.
 - **GRIMOIRE** — the gamified cybersecurity training platform. **100 hand-authored labs across 13 categories.** Faction system. XP economy. Boss contracts. Branching narrative quests. Maps to **11 professional certification paths.** Read more in [GRIMOIRE.md](./GRIMOIRE.md).
 - **synos-bevy** — Bevy 0.14 game engine, 8 plugins, ~7,000+ lines of immersive desktop experience.
-- **Arcanum Hive** — 8-node Tailscale mesh + Kubernetes operator. Sovereign coordination across distributed hardware.
+- **Arcanum Hive** — peer-to-peer encrypted mesh + Kubernetes operator. Sovereign coordination across distributed hardware. **The mesh is built for salvaged silicon** — old laptops and retired workstations pulled out of e-waste and back into the compute pool ([the philosophy →](./MESH.md)).
 - **Post-quantum cryptography** — ML-KEM, ML-DSA, and SLH-DSA built into the trust toolkit.
 - **41-stage self-healing build pipeline** producing three signed ISOs from a single source tree.
 - **1,600+ tests, 100% pass rate**, 35% tarpaulin coverage floor.
@@ -76,6 +76,7 @@ The boundaries between images are mechanically enforced — not honor-system. Wh
 
 ## what we promise
 
+- **The mesh is the product.** Local AI on hardware you physically own. Old silicon reclaimed from landfills, not new GPUs auto-billed monthly. ([the e-waste philosophy →](./MESH.md))
 - **No cloud in the critical path.** ALFRED runs on your machine. Inference happens locally. The system does not require a network connection to be useful.
 - **No telemetry without consent.** The default state is silent. Anything that crosses the boundary of the box, you approve.
 - **Memory-safe by default.** The Rust ratchet (v56) is a one-way commitment — kernel hot paths and userspace foundations move toward Rust, never away.

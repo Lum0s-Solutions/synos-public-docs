@@ -61,6 +61,13 @@ Every lab is real. Every solution is verifiable. Every credit is earned.
 
 Some scenarios are too big for a single lab. **Boss contracts** chain multiple labs into a single multi-stage arc — a piece of multi-week storytelling where you earn your way through stages, where partial progress matters, and where the final clear means something.
 
+Boss contracts live in two tiers:
+
+- **Raids** — multi-lab arcs designed for cohorts. The engine tracks party composition, role assignment, and shared progress.
+- **Nightmare** — solo-tier endgame contracts. Brutal. Long. The kind of work that earns its own page on your operator résumé.
+
+Each contract is described by a `contract.toml` declaring the ordered constituent labs, the narrative beats inserted between them, branch conditions (the engine reads what *kind* of solution you produced and routes you accordingly), and the final reward. The engine treats a boss contract as a **state machine**: progress is persisted to your save file, you can step away and return without losing place, and **branches don't just change which lab is next — they change which faction owes you a favor afterward.**
+
 Boss contracts are the tests the system pulls out when it thinks you're ready.
 
 ### the economy
@@ -68,6 +75,39 @@ Boss contracts are the tests the system pulls out when it thinks you're ready.
 Earning is more than XP. GRIMOIRE has a **loot and crafting economy**. Solve labs, you earn artifacts. Combine artifacts, you craft equipment. Equipment opens doors. Better gear unlocks harder labs. Harder labs feed deeper missions.
 
 It's not pay-to-win. It's *earn-to-play.*
+
+Loot tables are tied to lab tiers — beginner labs drop common components, advanced labs drop rare ones, raids drop legendary blueprints. Crafted gear modifies your in-game stats: detection radius, lab attempt limits, hint-cost reductions, faction reputation multipliers. Some pieces unlock *only* at certain prestige levels — meaning the operator who's ground through a hundred labs has gear the new arrival can't even see in the catalog.
+
+### the XP engine
+
+The gamification crate is the largest single Rust crate in the platform — close to **a hundred thousand lines** of game systems code, with over a thousand tests holding the math in place. The level curve is a modified logarithmic ramp with prestige boundaries; XP doesn't merely pile up, it transforms.
+
+XP sources the engine recognizes:
+
+- **Lab completion** — base XP from each lab's manifest.
+- **Speed runs** — beat a lab's timer threshold and a multiplier kicks in.
+- **Achievements** — one-time grants from a static table; some require lateral thinking the engine notices on its own.
+- **Daily and weekly challenges** — rotating objectives that ask you to do *something specific* with what you already know.
+- **Upstream contributions** — XP grants keyed off **signed commit attestations**. You can't forge it by editing a local file. The signature is checked against the project's keyring.
+- **Boss contract clears** — the prize pools that move you up tiers.
+
+Multipliers stack **multiplicatively**, not additively, up to a hard cap (enforced by a property test — the math doesn't get to drift). Faction affinity, first-time completion, active event modifiers — the cap is real.
+
+### the arsenal
+
+GRIMOIRE doesn't ship "a list of tools." It ships a **multi-distro arsenal** stitched together with a curated catalog and faction-flavored access.
+
+**Three distrobox-based operator environments** ride alongside the host system, each a fully isolated Linux distribution available at your fingertips:
+
+| Container | What's in it | When to reach for it |
+|---|---|---|
+| **Kali** | The classic offensive-security toolkit — Burp, Metasploit, Nmap, sqlmap, Wireshark, Aircrack-ng, hashcat, John, the lot | Web app testing, network reconnaissance, password attacks, the standard pentest workflow |
+| **BlackArch** | The largest offensive-security tool collection in any Linux ecosystem — well over 2,800 packages spanning every category from binary analysis to wireless | Niche tools, exotic protocols, specialist research, anything Kali doesn't ship |
+| **Parrot** | Security + privacy + forensics, with Anonsurf and the privacy-tooling stack | OPSEC-conscious engagements, anonymization workflows, forensic recovery |
+
+The host distribution layers in **600+ tools natively** through the Arch + AUR ecosystem, plus the project's own tooling (memory-safe replacements, ALFRED-aware integrations, custom ATT&CK-tagged utilities). Total cross-distrobox surface: **3,400+ tools** at your reach, without juggling separate VMs.
+
+The arsenal isn't dumped on you at first boot. **Tools unlock progressively** through GRIMOIRE's certification arcs — beginning users see a curated starter set; the wider catalog opens as your skill bracket rises. This is not artificial difficulty: it's the difference between handing a novice every weapon in the armory and walking them through what each tool actually does, on a live target, in context.
 
 ### narrative quests
 
@@ -80,6 +120,31 @@ GRIMOIRE plays best with peers. **Cohort mode** lets a class, a club, or a team 
 Some of the best labs can only be solved as a group.
 
 ---
+
+### the certification arcs
+
+GRIMOIRE doesn't replace certifications. It makes the practice that earns them feel like a story you're inside, not a syllabus you're slogging through. Lab progression is mapped against the major industry tracks:
+
+- **Offensive Security** — OSCP, OSEP, OSWE, OSCE³
+- **GIAC / SANS** — every active GIAC track with at least one mapped lab arc
+- **(ISC)²** — CISSP, CCSP, CSSLP foundations
+- **EC-Council** — CEH, CHFI, CCISO
+- **INE** — eJPT, eCPPT, eWPTXv2
+- **Defensive operations** — Splunk, Sentinel, Elastic certifications
+- **Cloud security** — AZ-500, SC-100, AWS Security Specialty
+
+Each cert track is materialized as a progression arc with labs mapped to actual exam objectives. You don't just *prepare* for the exam. You *live the curriculum*, in faction-colored scenarios, with real adversaries (some of them ALFRED-driven) and real loot to show for it.
+
+### blue. red. purple. all of it.
+
+GRIMOIRE refuses the false choice between offensive and defensive. The lab corpus spans:
+
+- **Blue team** — SOC workflows, SIEM queries, incident response, log analysis, threat hunting, forensics, detection engineering, malware analysis
+- **Red team** — reconnaissance, exploitation, privilege escalation, lateral movement, persistence, OPSEC, sandboxed adversary tradecraft
+- **Purple team** — collaborative detect-validate loops, ATT&CK-driven assessments, detection-as-code authoring, shared telemetry analysis
+- **War games** — live seasonal scenarios with rotating threats, ALFRED-driven adversary simulation, player-vs-player head-to-heads, team-vs-team campaigns, King-of-the-Hill persistence contests
+
+Pick one lane. Pick all of them. The platform doesn't care. The platform *records* — and the leaderboards remember who turned up for which fights.
 
 ## the path
 
