@@ -6,7 +6,7 @@
 
 ## what's already in the platform
 
-The current generation of Syn_OS — **v60 "Sun & Salt"** — is the product of a sustained, multi-year build. The system that exists today carries:
+The current generation of Syn_OS — **v80 "Sunlance", the 1.0 GA release** — is the product of a sustained, multi-year build. The system that exists today carries:
 
 - A custom Linux kernel with deep Rust integration and a deliberate system-call surface for AI/observability.
 - A local AI daemon — codename **ALFRED** — modeled after the structure of a biological brain.
@@ -16,7 +16,7 @@ The current generation of Syn_OS — **v60 "Sun & Salt"** — is the product of 
 - Post-quantum cryptography woven through the trust toolkit.
 - A self-healing build pipeline producing signed releases with verifiable supply-chain provenance.
 
-The work to get here was coordinated across many named campaigns, each adding a load-bearing piece to the platform. The compounding effect is what v60 represents.
+The work to get here was coordinated across many named campaigns, each adding a load-bearing piece to the platform. The compounding effect — twenty consecutive releases from v61 to v80 — is what the 1.0 GA represents: a hardened kernel AI interface, post-quantum defaults, a 1.0 GRIMOIRE catalog, and ALFRED consolidated to v6.0.
 
 ---
 

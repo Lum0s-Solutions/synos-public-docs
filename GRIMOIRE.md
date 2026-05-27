@@ -20,7 +20,7 @@ It's the platform we ship to the community. It's the closest thing we know how t
 
 | | |
 |---|---|
-| Hand-authored labs | **100**, exact (enforced by integrity manifest) |
+| Hand-authored labs | **108** (GRIMOIRE catalog **1.0**), exact (enforced by integrity manifest) |
 | Lab categories | **13** (beginner, advanced, crypto, web, network, forensics, reversing, ai-red-team, ad, cloud, mobile, hardware, osint) |
 | Certification paths mapped | **11** (CompTIA Security+ / CySA+ / PenTest+, OSCP, OSWE, CRTP, CRTO, CEH, CISSP foundations, GIAC GPEN/GCIH, eJPT) |
 | Game engine plugins | **8** (cutscene, mindmap, retro filter, cyberspace, skill tree, faction HQ, rehoboam, twin) |
@@ -39,7 +39,7 @@ There are no "good guys" and "bad guys." There are people with different philoso
 
 ### labs
 
-The atom of progression is the **lab** — a hand-authored challenge built around a specific technique, vulnerability, or defensive posture. The 100-lab corpus spans:
+The atom of progression is the **lab** — a hand-authored challenge built around a specific technique, vulnerability, or defensive posture. The 108-lab corpus (catalog 1.0) spans 13 categories — a representative cut:
 
 - **Beginner** (14 labs) — first-contact for users with no prior background.
 - **Advanced** (14 labs) — hard multi-stage exploitation, real-world complexity.
@@ -166,7 +166,7 @@ The wizard is not a personality test. It's a **calibration**. It tunes the early
 
 ## lab integrity
 
-Every lab in the 100-lab corpus is hashed and signed. The `INTEGRITY_MANIFEST.toml` at the root of the lab tree enforces: exact lab count, per-lab SHA-256, per-category counts. The build system refuses to publish an ISO whose lab corpus doesn't match.
+Every lab in the 108-lab corpus is hashed and signed. The `INTEGRITY_MANIFEST.toml` at the root of the lab tree enforces: exact lab count, per-lab SHA-256, per-category counts. The build system refuses to publish an ISO whose lab corpus doesn't match.
 
 This matters because GRIMOIRE is a training platform — the integrity of what you're being asked to learn is load-bearing. We don't ship if we can't verify.
 
