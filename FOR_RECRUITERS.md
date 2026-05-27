@@ -81,6 +81,7 @@ For anyone evaluating leadership: a project of this scope cannot be willed into 
 - [ARCHITECTURE.md](./ARCHITECTURE.md) — the four pillars and the substrate
 - [FEATURES.md](./FEATURES.md) — capability inventory
 - [ROADMAP.md](./ROADMAP.md) — what's shipped and what's coming
+- [CHANGELOG.md](./CHANGELOG.md) — public release notes, v80 GA
 
 ---
 
