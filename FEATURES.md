@@ -1,24 +1,25 @@
 # Capabilities
 
-### *Syn_OS v60.0.0 "Sun & Salt" — what's actually inside.*
+### *Syn_OS v80.0.0 "Sunlance" (1.0 GA) — what's actually inside.*
 
 ---
 
 ## kernel
 
 - **Custom Linux 6.19** built with `CONFIG_RUST=y`.
-- **17 custom system calls** (469–485) exposing AI/consciousness state, eBPF instrumentation, kernel observability, and process attestation to userspace.
-- **11 loadable Rust kernel modules**: memory, networking, hardening, interrupts, modloader, procfs, power, consciousness, hardening, module verification, plus the synos hardening core.
-- **Kernel hot path 83.54% Rust** (post-v56 Rust ratchet).
+- **Capability-gated kernel interface** — signed, memory-safe Rust kernel modules expose AI/observability state to userspace (decision telemetry, namespace trust, audit and incident signals, kernel-mitigation posture). Access is root-only and capability-gated; the build hard-fails without a kernel signing key.
+- **Kernel hot path heavily Rust** (the post-Rust-ratchet commitment — hot paths and foundations move toward Rust, never away).
 - **KSPP hardening fragment** merged into the kernel config.
-- **Module signing** wired through MOK keys generated at build time.
+- **Module signing enforced** — MOK keys, signed modules, signature verification at load.
 
 ---
 
 ## ALFRED — the AI daemon
 
+- **ALFRED v6.0** — the GA consolidation of the daemon.
 - **Local inference** via Ollama and ONNX. No cloud in the critical path.
 - **11-region neuroanatomically-modeled brain.** Specialized regions coordinated by a brainstem.
+- **Guardrails on autonomous behavior** — bounded, policy-checked remediation rather than free rein.
 - **Cortex stage** fusing traditional AI, neuromorphic spike networks, quantum coherence collapse, and TNGS.
 - **`research-mode` cargo feature** unlocks extended analysis paths for the Goodlife ISO.
 - **Smoke-tested.** 14-check ALFRED smoke suite in CI.
@@ -28,7 +29,7 @@
 
 ## GRIMOIRE — gamified training
 
-- **100 hand-authored labs** across **13 categories** (integrity-manifest enforced).
+- **GRIMOIRE 1.0** catalog — **108 hand-authored labs** across **13 categories** (integrity-manifest enforced).
 - **11 certification paths** mapped (Security+, OSCP, OSWE, CRTP, CRTO, eJPT, GPEN/GCIH, CEH, CISSP foundations, etc.).
 - **Faction system** — at least three named houses, allegiance gates content, faction wars are a recurring beat.
 - **XP economy** — earn, spend, craft, trade.
@@ -67,7 +68,9 @@ See [GRIMOIRE.md](./GRIMOIRE.md) for the deep dive.
 
 ---
 
-## post-quantum cryptography
+## post-quantum cryptography (default)
+
+Post-quantum is the **default posture**, not an opt-in — hybrid key exchange and signatures across the system's transport and signing surfaces.
 
 - **ML-KEM** — key encapsulation (Kyber successor).
 - **ML-DSA** — digital signatures (Dilithium successor).
@@ -83,7 +86,7 @@ See [GRIMOIRE.md](./GRIMOIRE.md) for the deep dive.
 - **SLSA-3 reproducible build pipeline** with dual-witness cross-oracle verification (when the second oracle is online).
 - **`cargo deny` clean** — OpenSSL/native-tls banned. Unmaintained crates pinned or replaced.
 - **Patch generator** — block-level binary diffing with zstd compression and SHA-256 manifests.
-- **Lab integrity manifest** — every lab in the 100-lab corpus hashed and verified.
+- **Lab integrity manifest** — every lab in the 108-lab corpus hashed and verified.
 
 ---
 
@@ -92,7 +95,7 @@ See [GRIMOIRE.md](./GRIMOIRE.md) for the deep dive.
 - **Cinnamon + Xfce4 dual-desktop** support out of the box.
 - **LightDM** display manager.
 - **Plymouth** boot splash with the project's red-phoenix theme.
-- **synos-ops TUI** — 6-tab operations dashboard for the operator.
+- **synos-ops TUI** — expanded multi-tab operations dashboard for the operator.
 - **Sound theme**, custom wallpapers, fastfetch integration.
 - **Branding consistency** across MOTD, terminal headers, and `/etc/os-release`.
 
@@ -109,10 +112,10 @@ See [GRIMOIRE.md](./GRIMOIRE.md) for the deep dive.
 
 ## quality gates
 
-- **160-crate Rust workspace.** Zero compile errors.
+- **209-crate Rust workspace.** Zero compile errors.
 - **1,600+ tests.** 100% pass rate.
 - **35% tarpaulin coverage floor**, ratcheted upward over time.
-- **17 CI workflows** — 5 ubuntu-latest, 12 self-hosted runners.
+- **SHA-pinned CI workflows** across hosted and self-hosted runners.
 - **Self-healing build pipeline** across 41 stages.
 - **MkDocs Material** documentation site, version-aware.
 

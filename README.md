@@ -4,12 +4,12 @@
 
 # Syn_OS
 
-### v60.0.0 — "Sun & Salt"
+### v80.0.0 — "Sunlance" (1.0 GA)
 
 *An AI-native cybersecurity operating system, built almost entirely in Rust, designed for those who treat security as craft.*
 
-[![Status](https://img.shields.io/badge/status-pre--release-ff6b35)]()
-[![Codename](https://img.shields.io/badge/codename-Sun_&_Salt-c9302c)]()
+[![Status](https://img.shields.io/badge/status-1.0_GA-2e8b57)]()
+[![Codename](https://img.shields.io/badge/codename-Sunlance-c9302c)]()
 [![Built with](https://img.shields.io/badge/built_with-Rust-000000?logo=rust)]()
 [![License (this repo)](https://img.shields.io/badge/docs-CC--BY--SA_4.0-blue)](LICENSE)
 
@@ -25,38 +25,34 @@ Syn_OS is built on a different premise than the security-distro lineage that cam
 
 ---
 
-## what's in v60
+## what's in v80
 
-The platform that ships as Syn_OS today is the result of a sustained, multi-year build.
+v80.0.0 "Sunlance" is the **1.0 GA release** — the milestone that closes a sustained, multi-year build.
 
-- **Custom Linux 6.19 kernel** with `CONFIG_RUST=y` and **17 custom system calls** (numbered 469–485) that expose consciousness state, quantum memory entanglement, eBPF instrumentation, kernel observability, and process attestation directly to userspace.
-- **160-crate Rust workspace.** Zero compile errors. Memory safety where memory safety matters.
-- **ALFRED v5** — the AI daemon. 11-region neuroanatomically-modeled brain. Local inference via Ollama and ONNX. No cloud in the critical path.
-- **GRIMOIRE** — the gamified cybersecurity training platform. **100 hand-authored labs across 13 categories.** Faction system. XP economy. Boss contracts. Branching narrative quests. Maps to **11 professional certification paths.** Read more in [GRIMOIRE.md](./GRIMOIRE.md).
+- **Custom Linux 6.19 kernel** with `CONFIG_RUST=y` and a **capability-gated kernel interface** that lets userspace query AI/observability state — decision telemetry, namespace trust, audit and incident signals, mitigation posture — through signed, memory-safe Rust kernel modules. Access is root-only and capability-gated.
+- **209-crate Rust workspace.** Zero compile errors. Memory safety where memory safety matters.
+- **ALFRED v6.0** — the AI daemon. Neuroanatomically-modeled brain. Local inference via Ollama and ONNX. No cloud in the critical path.
+- **GRIMOIRE 1.0** — the gamified cybersecurity training platform. **108 hand-authored labs across 13 categories.** Faction system. XP economy. Boss contracts. Branching narrative quests. Maps to **11 professional certification paths.** Read more in [GRIMOIRE.md](./GRIMOIRE.md).
 - **synos-bevy** — Bevy 0.14 game engine, 8 plugins, ~7,000+ lines of immersive desktop experience.
 - **Arcanum Hive** — peer-to-peer encrypted mesh + Kubernetes operator. Sovereign coordination across distributed hardware. **The mesh is built for salvaged silicon** — old laptops and retired workstations pulled out of e-waste and back into the compute pool ([the philosophy →](./MESH.md)).
-- **Post-quantum cryptography** — ML-KEM, ML-DSA, and SLH-DSA built into the trust toolkit.
+- **Post-quantum cryptography by default** — hybrid ML-KEM / ML-DSA across the system's transport and signing paths, with SLH-DSA in the trust toolkit.
 - **41-stage self-healing build pipeline** producing three signed ISOs from a single source tree.
 - **1,600+ tests, 100% pass rate**, 35% tarpaulin coverage floor.
 - **MkDocs Material documentation** site, version-aware, checked against the source.
 
 ---
 
-## the v44 → v60 codesprint, in one breath
+## the road to 1.0, in one breath
 
-Sixteen versions of compounding work shipped between v44 and v60:
+Syn_OS reached 1.0 GA the way the rest of it was built — by compounding. **Twenty consecutive releases (v61 → v80)** carried the platform from the v60 line to the "Sunlance" general-availability milestone:
 
-| Codename | Theme |
-|---|---|
-| **v44 Crucible** | Fuzz harness + observability kernel + rebuild-verify CI |
-| **v45 Glasswalker** | Kernel observability syscalls (480–485) — eBPF, perf, attestation |
-| **v46 Beachhead** | Process attestation HMAC ledger + LSM hooks |
-| **v51 Storm Glass** | TwinPlugin (8th synos-bevy plugin) + kernel snapshot |
-| **v55 Stoneglass** | Hive Ansible deploy (8-node GA playbook) |
-| **v56 (Rust Ratchet)** | Kernel hot-path Rust at 83.54% |
-| **v60 Sun & Salt** | SBOM drift detector + IPO readiness self-test + external blocker playbook |
+- The kernel's AI/observability interface was **re-architected and hardened** — signed modules, capability gates, root-only device access.
+- **Post-quantum cryptography became the default**, not an option, across the system's transport and signing surfaces.
+- The **GRIMOIRE catalog matured to 1.0** — 108 labs across 13 categories.
+- **ALFRED consolidated into v6.0**, with a privacy-first, local-only posture and stronger guardrails around autonomous behavior.
+- Supply-chain trust deepened — signed modules enforced, content-pinned packages, build-from-source attestation.
 
-The first ISO carrying the full codesprint ships as v60.
+The deeper mechanics of these subsystems live with the source. The shape above is the public picture.
 
 ---
 
@@ -67,7 +63,7 @@ Syn_OS is built once and ships in three signed ISOs.
 | Image | Audience | What it carries |
 |---|---|---|
 | **Operator (Master)** | The team that builds Syn_OS. Internal. | The full surface. Not distributed publicly. |
-| **GRIMOIRE Public** | Students, cohorts, self-taught practitioners. | The 100-lab training platform, gated tooling, mixed Apache 2.0 + GRIMOIRE-Public license. |
+| **GRIMOIRE Public** | Students, cohorts, self-taught practitioners. | The 108-lab training platform, gated tooling, mixed Apache 2.0 + GRIMOIRE-Public license. |
 | **Goodlife** | AI researchers, post-quantum experimenters, civilian work. | Jupyter + 10-package research stack, ALFRED `research-mode`, LUKS-encrypted research data. |
 
 The boundaries between images are mechanically enforced — not honor-system. What ships, ships clean.
